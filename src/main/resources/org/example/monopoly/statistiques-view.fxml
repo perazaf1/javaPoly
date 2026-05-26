@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.monopoly.StatistiquesController"
+            styleClass="root-dark">
+
+    <top>
+        <HBox alignment="CENTER" spacing="20.0" styleClass="header-bar">
+            <padding>
+                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0"/>
+            </padding>
+            <Label text="Statistiques de la partie" styleClass="titre-stats"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Retour a la partie" onAction="#retourPartie" styleClass="btn-secondary"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="20.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+
+            <!-- Evolution de la fortune -->
+            <LineChart fx:id="chartFortune" title="Evolution de la fortune" styleClass="chart-style">
+                <xAxis>
+                    <NumberAxis label="Tour" fx:id="axeTours"/>
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Fortune ($)" fx:id="axeFortune"/>
+                </yAxis>
+            </LineChart>
+
+            <HBox spacing="20.0" HBox.hgrow="ALWAYS">
+                <!-- Comparaison des patrimoines -->
+                <BarChart fx:id="chartPatrimoine" title="Patrimoine total" styleClass="chart-style" HBox.hgrow="ALWAYS">
+                    <xAxis>
+                        <CategoryAxis label="Joueurs" fx:id="axeJoueurs"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Patrimoine ($)" fx:id="axePatrimoine"/>
+                    </yAxis>
+                </BarChart>
+
+                <!-- Repartition des proprietes -->
+                <PieChart fx:id="chartProprietes" title="Repartition des proprietes" styleClass="chart-style" HBox.hgrow="ALWAYS"/>
+            </HBox>
+        </VBox>
+    </center>
+
+</BorderPane>
